@@ -4,6 +4,7 @@ Libraries used in this application:
 * Ant Design - for design and layout
 * axios - for fetching data
 * Highcharts - for data visualisation
+* Alpha Vantage - API for Stock
 
 ## Available Scripts
 
