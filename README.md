@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application is live here: https://react-stock-price.herokuapp.com/
+
+Libraries used in this application:
+* Ant Design - for design and layout
+* axios - for fetching data
+* Highcharts - for data visualisation
 
 ## Available Scripts
 
