@@ -1,7 +1,7 @@
 
 export interface Item {
-    date: Date,
-    price: number
+    x: number,
+    y: number
 }
 
 
@@ -9,8 +9,8 @@ export const mapData = (data: any): Array<Item> => {
     return Object.keys(data).map((key: string) => {
 
         return {
-            date: new Date(key),
-            price: parseFloat(data[key]['4. close'] || 0),
+            x:  new Date(key).getTime(),
+            y: parseFloat(data[key]['4. close'] || 0),
         };
     });
 }

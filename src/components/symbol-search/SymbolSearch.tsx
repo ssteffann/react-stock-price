@@ -4,20 +4,21 @@ import axios from "../../config/api";
 import debounce from 'lodash.debounce';
 import {buildOptions, OptionType} from './helpers';
 
-
 interface Props {
     onSelect: (value: string) => void,
     placeholder?: string,
     defaultValue?: string,
 }
 
-const { Option } = Select;
-
+const {Option} = Select;
 
 const SymbolSearch = ({onSelect, placeholder, defaultValue}: Props) => {
-    const [options, setOptions] = useState([]);
+    const [options, setOptions] = useState<OptionType[]>([]);
+    const [loading, setLoading] = useState(false);
     const [value, setValue] = useState(defaultValue);
+
     const getSymbol = async (keywords: string = ''): Promise<any> => {
+        setLoading(true);
         try {
             const response = await axios.get('/query', {
                 params: {
@@ -26,26 +27,22 @@ const SymbolSearch = ({onSelect, placeholder, defaultValue}: Props) => {
                 }
             })
 
-
-            console.log('response ------>', response);
-            // @ts-ignore
             setOptions(buildOptions(response.data.bestMatches));
 
         } catch (e) {
             console.error(e);
         } finally {
-
+            setLoading(false);
         }
-
     };
 
     const searchSymbol = useMemo(() => debounce(getSymbol, 400), [])
-
 
     return (
         <Select
             style={{width: '100%'}}
             showSearch
+            loading={loading}
             placeholder={placeholder}
             onSearch={searchSymbol}
             onChange={(value) => {

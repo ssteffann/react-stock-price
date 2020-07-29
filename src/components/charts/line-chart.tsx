@@ -1,24 +1,21 @@
-import React, {FunctionComponent, useEffect, useMemo} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import {initChart} from './helpers'
 
 interface Props {
-    data: Array<any>
+    data: Array<any>,
+    id: string,
+    title: string,
+    showSma?: boolean,
 }
 
-const LineChart: FunctionComponent<Props> = ({data}) => {
-    const chart = useMemo(() => {
-        return initChart('lineChart', data);
-    }, [data])
-
-
+const LineChart: FunctionComponent<Props> = ({data, id, title, showSma}) => {
     useEffect(() => {
-        return () => {
-            chart && chart.dispose();
-        }
-    }, []);
+        initChart(id, title, data, showSma);
+    }, [data, showSma])
+
 
     return (
-        <div id="lineChart" style={{width: "100%", height: "500px"}}/>
+        <div id={id} style={{width: "100%", height: "500px"}}/>
     );
 };
 
