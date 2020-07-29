@@ -20,11 +20,12 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "serve": "^11.3.2",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start-dev": "react-scripts start",
-    "start": "react-scripts build && NODE_ENV=production node server.js",
+    "start": "react-scripts build && serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,7 +33,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:5000/",
   "browserslist": {
     "production": [
       ">0.2%",
