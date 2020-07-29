@@ -11,7 +11,7 @@ interface Props {
 const LineChart: FunctionComponent<Props> = ({data, id, title, showSma}) => {
     useEffect(() => {
         initChart(id, title, data, showSma);
-    }, [data, showSma])
+    }, [data, showSma, id, title])
 
 
     return (
